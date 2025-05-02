@@ -38,18 +38,20 @@ function register_expiring_block() {
                     'label' => 'Start Date',
                     'name' => 'start_date',
                     'type' => 'date_time_picker',
-                    'required' => 0,
+                    'required' => 1,
                     'display_format' => 'Y-m-d H:i:s',
                     'return_format' => 'Y-m-d H:i:s',
+                    'default_value' => date('Y-m-d'), // current date and time
                 ),
                 array(
                     'key' => 'field_end_date',
                     'label' => 'End Date',
                     'name' => 'end_date',
                     'type' => 'date_time_picker',
-                    'required' => 0,
+                    'required' => 1,
                     'display_format' => 'Y-m-d H:i:s',
                     'return_format' => 'Y-m-d H:i:s',
+                    'default_value' => date('Y-m-d', strtotime('+1 month', current_time('timestamp'))),
                 ),
             ),
             'location' => array(

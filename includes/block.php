@@ -21,6 +21,11 @@ function expiring_block_render_callback($block, $content = '', $is_preview = fal
         }
     }
 
+    if ((! $start_date ) || (! $end_date )) {
+        $is_expired = true;
+        $visible_status = "Missing required start/end";
+    }
+
     if( ! $is_preview ) {
         // Frontend rendering
 
