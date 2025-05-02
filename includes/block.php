@@ -11,17 +11,41 @@ function expiring_block_render_callback($block, $content = '', $is_preview = fal
     $end_date = get_field('end_date');
     $now = current_time('Y-m-d H:i:s'); // WP's localized time.
 
+    $is_expired = false;
+    $visible_status = "Active";
     if( $start_date && $end_date ) {
         if( $now < $start_date || $now > $end_date ) {
             // Outside the range — don't output anything
-            return;
+            $is_expired = true;
+            $visible_status = "Expired";
         }
     }
 
-    // Inside range or no dates set — output content
-    echo "
-    <div class='expiring-block ${class_name}'>
-        ${content}
-    </div>
-    ";
+    if( ! $is_preview ) {
+        // Frontend rendering
+
+        // Render nothing if expired
+        if ($is_expired){
+            return;
+        }
+
+        // Inside range or no dates set — output content
+        echo "
+        <div class='expiring-block ${class_name}'>
+            ${content}
+        </div>
+        ";
+    } else {
+        // Backend editor rendering
+        echo "
+        <div class='date-visibility-block ${class_name}' style='border: 2px dashed #ccc; padding: 16px; position: relative;'>
+            <span style='position: absolute; top: -12px; left: 16px; background: #fff; padding: 0 8px; font-size: 12px; color: #888;'>
+                Expiring Block | Status: ${visible_status}
+            </span>
+            <InnerBlocks />
+        </div>
+        ";
+    }
+
+
 }
