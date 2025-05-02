@@ -38,8 +38,8 @@ function expiring_block_render_callback($block, $content = '', $is_preview = fal
     } else {
         // Backend editor rendering
         echo "
-        <div class='date-visibility-block ${class_name}' style='border: 2px dashed #ccc; padding: 16px; position: relative;'>
-            <span style='position: absolute; top: -12px; left: 16px; background: #fff; padding: 0 8px; font-size: 12px; color: #888;'>
+        <div class='expiring-block hbc-editor ${class_name}' >
+            <span>
                 Expiring Block | Status: ${visible_status}
             </span>
             <InnerBlocks />

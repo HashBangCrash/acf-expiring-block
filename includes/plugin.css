@@ -1,0 +1,17 @@
+.expiring-block.hbc-editor {
+  border: 2px dashed #ccc;
+  padding: 16px;
+  position: relative;
+}
+
+.expiring-block.hbc-editor span {
+  position: absolute;
+  top: -12px;
+  left: 16px;
+  background: #fff;
+  padding: 0 8px;
+  font-size: 12px;
+  color: #888;
+}
+
+/*# sourceMappingURL=plugin.css.map */

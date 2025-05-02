@@ -9,9 +9,10 @@ function register_expiring_block() {
     if (function_exists('acf_register_block_type')) {
         acf_register_block_type(array(
             'name'              => 'acf-expiring-block',
-            'title'             => __('ACF Expiring Block'),
+            'title'             => __('Expiring Block'),
             'description'       => __('A simple WordPress block to allow inner blocks that only get rendered within a specified date range.'),
             'render_callback'   => 'hbc_expiring_block\\block\\expiring_block_render_callback',
+            'enqueue_assets'    => 'hbc_expiring_block\\enqueue_js_css',
             'category'          => 'layout',
             'icon'              => 'calendar-alt',
             'keywords'          => array('expire', 'expiring', 'date', 'time', 'visibility', 'schedule'),
