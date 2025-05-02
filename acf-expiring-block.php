@@ -2,7 +2,7 @@
 /**
  * Plugin Name: ACF Expiring Block
  * Description: A simple WordPress block to allow inner blocks that only get rendered within a specified date range.
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author: Stephen Schrauger
  * Plugin URI: https://github.com/HashBangCrash/acf-expiring-block
  * Github Plugin URI: HashBangCrash/acf-expiring-block

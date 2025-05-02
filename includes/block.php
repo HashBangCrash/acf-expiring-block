@@ -11,26 +11,36 @@ function expiring_block_render_callback($block, $content = '', $is_preview = fal
     $end_date = get_field('end_date');
     $now = current_time('Y-m-d H:i:s'); // WP's localized time.
 
-    $is_expired = false;
+    $is_active = true;
     $visible_status = "Active";
+
     if( $start_date && $end_date ) {
-        if( $now < $start_date || $now > $end_date ) {
+        if($now < $start_date ) {
             // Outside the range — don't output anything
-            $is_expired = true;
-            $visible_status = "Expired";
+            $is_active = false;
+            $visible_status = "Inactive - Before start date";
+        }
+        if( $now > $end_date ) {
+            // Outside the range — don't output anything
+            $is_active = false;
+            $visible_status = "Inactive - Beyond end date";
+        }
+        if( $start_date > $end_date ){
+            $is_active = false;
+            $visible_status = "Inactive - ERROR | Start date is after end date";
         }
     }
 
     if ((! $start_date ) || (! $end_date )) {
-        $is_expired = true;
-        $visible_status = "Missing required start/end";
+        $is_active = false;
+        $visible_status = "Inactive - ERROR | Missing required start/end date";
     }
 
     if( ! $is_preview ) {
         // Frontend rendering
 
         // Render nothing if expired
-        if ($is_expired){
+        if (! $is_active){
             return;
         }
 
