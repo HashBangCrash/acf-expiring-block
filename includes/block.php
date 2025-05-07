@@ -53,7 +53,7 @@ function expiring_block_render_callback($block, $content = '', $is_preview = fal
     } else {
         // Backend editor rendering
         echo "
-        <div class='expiring-block hbc-editor ${class_name}' >
+        <div class='expiring-block hbc-editor ${visible_status} ${class_name} ' >
             <span>
                 Expiring Block | Status: ${visible_status}
             </span>

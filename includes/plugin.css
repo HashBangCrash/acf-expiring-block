@@ -4,6 +4,10 @@
   position: relative;
 }
 
+.expiring-block.hbc-editor.Active {
+  border: 2px dashed #5c5;
+}
+
 .expiring-block.hbc-editor span {
   position: absolute;
   top: -12px;
